@@ -1,0 +1,92 @@
+﻿@*@using Microsoft.AspNet.Identity
+    @if (Request.IsAuthenticated)
+    {
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink("你好 " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "管理" })
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">登出</a></li>
+        </ul>
+        }
+    }
+    else
+    {
+        <ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink("註冊", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+            <li>@Html.ActionLink("登入", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        </ul>
+    }*@
+<!-- Logo -->
+<a href="#" class="logo">
+    <!-- mini logo for sidebar mini 50x50 pixels -->
+    <span class="logo-mini"><b>E</b>OC</span>
+    <!-- logo for regular state and mobile devices -->
+    <span class="logo-lg"><b>籌碼分析網站</b></span>
+</a>
+<!-- Header Navbar: style can be found in header.less -->
+<nav class="navbar navbar-static-top" role="navigation">
+    <!-- Sidebar toggle button-->
+    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+    </a>
+    <!-- Navbar Right Menu -->
+    <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+            <!-- User Account: style can be found in dropdown.less -->
+            <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="~/Scripts/dist/img/tcglogo.jpg" class="user-image" alt="User Image" />
+                    <span class="hidden-xs">歡迎您： @TempData["UserName"]</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <!-- User image -->
+                    <li class="user-header">
+                        <img src="~/Scripts/dist/img/tcglogo.jpg" class="img-circle" alt="User Image" />
+                        <p>
+                            當前登入帳號： @TempData["Account"]
+                            <small>@DateTime.Now</small>
+                        </p>
+                    </li>
+                    <!-- Menu Body -->
+                    @*<li class="user-body">
+                            <div class="col-xs-4 text-center">
+                                <a href="#">單位：</a>
+                            </div>
+
+                        </li>*@
+                    <!-- Menu Footer-->
+                    <li class="user-footer">
+                        <div class="pull-left">
+                            <div class="col-xs-6 text-left">
+                                <a>@TempData["Account"]</a>
+                            </div>
+                            @*<div class="col-xs-6 text-center">
+                                @if (TempData["PersonalName"] != null)
+                                {
+                                    <a>@TempData["PersonalName"]</a>
+                                }
+                                else
+                                {
+                                    <a>機關帳號</a>
+                                }
+                            </div>*@
+                            @*<a href="#" class="btn btn-default btn-flat">資料</a>*@
+                        </div>
+                        <div class="pull-right">
+                                <a href="@Url.Action("LogOff", "Home")" class="btn btn-default btn-flat">登出</a>
+                                 @Html.AntiForgeryToken()
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <!-- Control Sidebar Toggle Button -->
+            <li>
+                <a href="~/Views/SingleStock/Index.cshtml" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+            </li>
+        </ul>
+    </div>
+</nav>

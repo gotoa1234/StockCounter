@@ -1,0 +1,136 @@
+﻿@model Model.ViewModel.NewsBoard.NewsBoardViewModel
+@{
+    ViewBag.Title = "編輯頁面";
+    Layout = null;
+}
+<html>
+   <head>
+        <meta charset="UTF-8">
+        <title>更新留言板 | 編輯</title>
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+       <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+       @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/Login")
+        @Scripts.Render("~/bundles/jqueryval")*@
+       <!--引用的kendoui datetimepicker-->
+       <link href="http://www.telerik.com/forums/newbie-kendodatepicker-is-not-a-function" rel="stylesheet" />
+       <script src="http://demos.telerik.com/kendo-ui/content/shared/inspector/inspector.js"></script>
+       <script src="http://code.jquery.com/jquery-1.12.3.min.js"></script>
+       <script src="http://kendo.cdn.telerik.com/2016.2.504/js/kendo.all.min.js"></script>
+       <script src="http://kendo.cdn.telerik.com/2016.2.504/js/kendo.timezones.min.js"></script>
+       <script src="http://demos.telerik.com/kendo-ui/content/shared/js/console.js"></script>
+       <script src="http://demos.telerik.com/kendo-ui/content/shared/js/prettify.js"></script>
+       <script src="http://demos.telerik.com/kendo-ui/content/shared/inspector/inspector.js"></script>
+       <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet" />
+       <link href="http://demos.telerik.com/kendo-ui/favicon.ico" rel="stylesheet" />
+       <link href="http://demos.telerik.com/kendo-ui/datepicker/index" rel="stylesheet" />
+       <link href="http://kendo.cdn.telerik.com/2016.2.504/styles/kendo.common-material.min.css" rel="stylesheet" />
+       <link href="http://kendo.cdn.telerik.com/2016.2.504/styles/kendo.rtl.min.css" rel="stylesheet" />
+       <link href="http://kendo.cdn.telerik.com/2016.2.504/styles/kendo.material.min.css" rel="stylesheet" />
+       <link href="http://kendo.cdn.telerik.com/2016.2.504/styles/kendo.material.mobile.min.css" rel="stylesheet" />
+       <link href="http://demos.telerik.com/kendo-ui/content/shared/styles/examples.css" rel="stylesheet" />
+       <link href="http://demos.telerik.com/kendo-ui/content/shared/inspector/inspector.css" rel="stylesheet" />
+       <!--kendoui-switch-->
+       <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2016.2.504/styles/kendo.common.min.css">
+       <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2016.2.504/styles/kendo.default.min.css">
+       <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2016.2.504/styles/kendo.mobile.all.min.css">
+    </head>
+    <body>
+
+
+        <div class="login-panel panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">更新留言板-編輯功能</h3>
+            </div>
+            <div class="panel-body ">
+               
+                @using (Html.BeginForm("KendoManagerEditForm_Edit", "Manager", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form"  }))
+                {
+                    @Html.AntiForgeryToken()
+
+
+              <!--GUID-->
+                    <div class="form-group has-feedback">
+                        @Html.LabelFor(m=>m.Guid , new { @class= "badge" })
+                        @Html.TextBoxFor(m => m.Guid, new { @class = "form-control", placeholder = "此欄位為唯讀", value = Model.Guid, @readonly = true })
+                        <span class="glyphicon glyphicon glyphicon-eye-open form-control-feedback"></span>
+                        @Html.ValidationMessageFor(m => m.Guid)
+                    </div>
+             <!--種類-->
+                    <div class="form-group has-feedback">
+                        @Html.LabelFor(m => m.Kind, new { @class = "badge" })
+                        @Html.TextBoxFor(m => m.Kind, new { @class = "form-control", placeholder = "請輸入更新種類", value = Model.Kind})
+                        <span class="glyphicon glyphicon glyphicon-eye-open form-control-feedback"></span>
+                        @Html.ValidationMessageFor(m => m.Kind)
+                    </div>
+             <!--標題-->
+                    <div class="form-group has-feedback">
+                        @Html.LabelFor(m => m.Title, new { @class = "badge" })
+                        @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "請輸入更新標題", value = Model.Title })
+                        <span class="glyphicon glyphicon glyphicon-eye-open form-control-feedback"></span>
+                        @Html.ValidationMessageFor(m => m.Title)
+                    </div>
+             <!--訊息-->
+                    <div class="form-group has-feedback">
+                        @Html.LabelFor(m => m.Message, new { @class = "badge" })
+                        @Html.TextAreaFor(m => m.Message, new { @class = "form-control", placeholder = "請輸入更新內容", value = Model.Message })
+                        <span class="glyphicon glyphicon glyphicon-eye-open form-control-feedback"></span>
+                        @Html.ValidationMessageFor(m => m.Message)
+                    </div>
+             <!--最後更新時間-->
+                    <div class="form-group has-feedback">
+                        @Html.LabelFor(m => m.Datetime, new { @class = "badge" })
+                        @Html.TextBoxFor(m => m.Datetime, new { @class = "form-control", placeholder = "該欄位為唯讀", value = Model.Datetime })
+                        <span class="glyphicon glyphicon glyphicon-eye-open form-control-feedback"></span>
+                        @Html.ValidationMessageFor(m => m.Datetime)
+                    </div>
+             <!--是否顯示資訊-->
+                    <div class="form-group has-feedback">
+                        @Html.LabelFor(m => m.ShowInfom, new { @class = "badge" })
+                        @Html.CheckBoxFor(m => m.ShowInfom, new { @class = "form-control", placeholder = "是否顯示資訊", value = Model.ShowInfom })
+                        <span class="glyphicon form-control-feedback"></span>
+                        @Html.ValidationMessageFor(m => m.ShowInfom)
+                    </div>
+             <!--備註-->
+                    <div class="form-group has-feedback">
+                        @Html.LabelFor(m => m.Note, new { @class = "badge" })
+                        @Html.TextAreaFor(m => m.Note, new { @class = "form-control", placeholder = "請輸入更新備註", value = Model.Note })
+                        <span class="glyphicon form-control-feedback"></span>
+                        @Html.ValidationMessageFor(m => m.Note)
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <button type="submit" class="btn btn-primary btn-block btn-flat">送出更新</button>
+                            @if (TempData["Result"] != null)
+                            {
+                               
+                                <h2>@TempData["Result"] </h2>
+                            }
+                        </div><!-- /.col -->
+                    </div>
+                }
+
+
+            </div><!-- /.login-box-body -->
+        </div><!-- /.login-box -->
+        <div class="bg bg-1"></div>
+
+
+    </body>
+
+</html>
+
+    <script>
+        $(document).ready(function () {
+            // create DateTimePicker from input HTML element
+            $("#Datetime").kendoDateTimePicker({
+                value: new Date(),
+                format: "yyyy/MM/dd HH:mm:ss ",
+                interval: 1
+            });
+ 
+            $("#ShowInfom").kendoMobileSwitch();
+            });
+    </script>

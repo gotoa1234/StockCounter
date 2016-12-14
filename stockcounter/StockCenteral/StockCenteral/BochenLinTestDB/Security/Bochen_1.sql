@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [Bochen]
+    WITH PASSWORD = N'kpbuqgvwfpuosaqdXniuyj|~msFT7_&#$!~<drka;|wckwOp', SID = 0x0AD11A81515EA24F9C3444590992C891, DEFAULT_LANGUAGE = [繁體中文], CHECK_POLICY = OFF;
+

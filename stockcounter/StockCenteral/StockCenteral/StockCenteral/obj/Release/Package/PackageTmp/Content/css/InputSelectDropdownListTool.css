@@ -1,0 +1,82 @@
+
+    .Control_Div {
+        width: 400px;
+        height: 200px;
+        top: 100px;
+        left: 100px;
+        background-color: snow;
+        position: absolute;
+    }
+
+    .DropDown_HostDiv {
+        position: relative;
+        float: left;
+        width: 120px;
+        height: 26px;
+    }
+
+    .DropDown_TextBox {
+        position: relative;
+        width: 100px;
+        height: 16px;
+    }
+
+    .DropDown_Container {
+        position: relative;
+        display: none;
+        width: 100px;
+        height: 180px;
+        border: 1px solid Black;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .DropDown_Item {
+        width: 100%;
+        font-family: "Arial", "Georgia", "Verdana", "Helvetica", "sans-serif";
+        font-size: 13px;
+        background-color: #eafbe5;
+        height: 15px;
+        color: black;
+        border-bottom: 1px solid White;
+        padding-top: 4px;
+        padding-left: 3px;
+    }
+
+        .DropDown_Item:hover {
+            background-color: #0BD6DA;
+        }
+
+    .DropDown_Container {
+        position: relative;
+        top: 2px;
+        width: 35%;
+        height: 150px;
+        overflow: auto;
+        overflow-x: hidden;
+        border: 1px solid Gray;
+    }
+
+        .DropDown_Container table {
+            width: 340px;
+            height: auto;
+            border-collapse: collapse;
+        }
+    <!-- 下拉式選單的表格格式-- > .DropDown_Container table tr {
+        width: auto;
+        padding-top: 1px;
+        height: 18px;
+        font-size: 13px;
+        border-bottom: 0px solid gray;
+        background-color: #F7F4FD;
+        cursor: pointer;
+    }
+
+    .DropDown_Container table tr:hover {
+        background-color: LightBlue;
+    }
+
+    .DropDown_Container table tr td {
+        font-family: Verdana;
+        border-bottom: 0px solid gray;
+    }

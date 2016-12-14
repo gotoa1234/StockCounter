@@ -1,0 +1,9 @@
+2016-06-13 14:56:35.2527 | FATAL | ClientRoot | ¡ierror¡j:[object Object] ==> Not Found 
+
+2016-06-13 14:58:31.2824 | FATAL | ClientRoot | ¡ierror¡j:[object Object] ==> Not Found 
+
+2016-06-13 14:58:44.2877 | FATAL | ClientRoot | ¡ierror¡j:[object Object] ==> Not Found 
+
+2016-06-13 15:02:56.9122 | FATAL | ClientRoot | ¡ierror¡j:[object Object] ==> Not Found 
+
+2016-06-13 15:03:06.1289 | FATAL | ClientRoot | ¡ierror¡j:{"Message":"No HTTP resource was found that matches the request URI 'http://localhost:2874/api/SingleStockApi/GetSingleStockChart33'.","MessageDetail":"No action was found on the controller 'SingleStockApi' that matches the name 'GetSingleStockChart33'."} ==> Not Found 

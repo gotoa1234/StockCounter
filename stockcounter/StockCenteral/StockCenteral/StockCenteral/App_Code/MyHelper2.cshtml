@@ -1,0 +1,170 @@
+﻿@helper HelperName(string name)
+{
+// 您的協助程式可包含程式碼和/或標記，例如
+// var msg = "Hello " + name;
+// <p>@msg</p>
+// 如需詳細資訊請造訪 http://go.microsoft.com/fwlink/?LinkID=204658
+}
+@helper fimg(int width, int height)
+{
+    <img src="https://unsplash.it/@width}/@height}/?random\" alt="...\">
+
+}
+
+<!--當前版本訊息-->
+@functions{
+    /// <summary>
+    /// 顯示當前版本資訊
+    /// </summary>
+}
+@helper NowVersion()
+{
+    @("version 1.0.0");
+}
+
+@functions{
+    /// <summary>
+    /// 組成sparkline 圖表的 table資料
+    /// </summary>
+}
+@helper LeardBoardSparklineTable(string tableID, List<Model.ViewModel.Leardboard.LeaderboardTDDCModel> ResultRowData)
+{
+    <thead>
+        <tr>
+            <th>名稱</th>
+            <th>狀態</th>
+            <th>散戶增加率</th>
+            <th>各期變化</th>
+            <th>大戶增加率</th>
+            <th>千戶增加率</th>
+            <th>各期變化</th>
+            <th>波動率</th>
+        </tr>
+    </thead>
+
+    <tbody id="tbody-sparkline">
+
+        @{
+            foreach (var temp in ResultRowData)
+            {
+                <tr>
+                    <th>@temp.mapping_tablename</th>
+                    <td>@temp.Table_state</td>
+                    <td>@temp.RetailRate</td>
+                    <td data-sparkline="@temp.RetailEachOfData ; line" />
+                    <td>@temp.LaregeRate</td>
+                    <td>@temp.LaregeOnlyThousandRate</td>
+                    <td data-sparkline="@temp.LaregeEachOfData ; line" />
+                    <td>@(Math.Abs(temp.RetailRate - temp.LaregeRate))</td>
+
+                </tr>
+            }
+
+        }
+
+    </tbody>
+
+}
+@functions{
+    /// <summary>
+    /// 組成使用者自訂選項的股票比率 table資料
+    /// </summary>
+}
+@helper SingleStockExtentionKind()
+{
+    <table style="font-size:10px" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>序列</th>
+                <th>群組名稱</th>
+                <th>1-999(股)</th>
+                <th>1-5(張)</th>
+                <th>5-10(張)</th>
+                <th>10-15(張)</th>
+                <th>15-20(張)</th>
+                <th>20-30(張)</th>
+                <th>30-40(張)</th>
+                <th>40-50(張)</th>
+                <th>50-100(張)</th>
+                <th>100-200(張)</th>
+                <th>200-400(張)</th>
+                <th>400-600(張)</th>
+                <th>600-800(張)</th>
+                <th>800-1000(張)</th>
+                <th>1000以上(張)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                //五種自訂群組
+                for (int i = 1; i < 6; i++)
+                {
+                    <tr>
+                        <td>@(i.ToString())</td>
+                        <td><input type="text" id="autokind_name_@(i.ToString())" value="自訂@(i.ToString())" /></td>
+
+                        @{
+                            for (int j = 1; j < 16; j++)
+                            {
+                                <td><input type="checkbox" id="autokind_@(i.ToString())_@(j.ToString())" /></td>
+                            }
+                        }
+                    </tr>
+                            }
+
+            }
+        </tbody>
+    </table>
+}
+
+@functions{
+    /// <summary>
+    /// 組成使用者自訂選項的股東人數 table資料
+    /// </summary>
+}
+@helper SingleStockPeopleExtentionKind()
+{
+    <table style="font-size:10px" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>序列</th>
+                <th>群組名稱</th>
+                <th>1-999(股)</th>
+                <th>1-5(張)</th>
+                <th>5-10(張)</th>
+                <th>10-15(張)</th>
+                <th>15-20(張)</th>
+                <th>20-30(張)</th>
+                <th>30-40(張)</th>
+                <th>40-50(張)</th>
+                <th>50-100(張)</th>
+                <th>100-200(張)</th>
+                <th>200-400(張)</th>
+                <th>400-600(張)</th>
+                <th>600-800(張)</th>
+                <th>800-1000(張)</th>
+                <th>1000以上(張)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                //五種自訂群組
+                for (int i = 1; i < 6; i++)
+                {
+                    <tr>
+                        <td>@(i.ToString())</td>
+                        <td><input type="text" id="autopeoplekind_name_@(i.ToString())" value="自訂@(i.ToString())" /></td>
+
+                        @{
+                            for (int j = 1; j < 16; j++)
+                            {
+                                <td><input type="checkbox" id="autopeoplekind_@(i.ToString())_@(j.ToString())" /></td>
+                            }
+                        }
+                    </tr>
+                            }
+
+            }
+        </tbody>
+    </table>
+}

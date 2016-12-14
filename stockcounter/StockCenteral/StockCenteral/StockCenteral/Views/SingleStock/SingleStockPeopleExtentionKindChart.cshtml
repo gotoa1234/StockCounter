@@ -1,0 +1,13 @@
+﻿@model  StockCenteral.ViewModel.SingleStock.SingleStockModel
+
+@{
+    ViewBag.Title = "股東人數圖表_使用者自訂群組";
+
+}
+
+
+<script src="~/Scripts/self/SingleStock/SingleStockPeopleExtentionKindChart.js"></script>
+
+@MyHelper2.SingleStockPeopleExtentionKind();
+
+<div id="SingleStockPeopleExtentionKindChartTDDC" style="min-width:84%;height:400px"></div>

@@ -1,0 +1,116 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" />
+
+    <title>@ViewBag.Title - @MyHelper2.NowVersion()</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/LoginCss")
+    @Scripts.Render("~/bundles/modernizr")
+    <!-- Font Awesome Icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Ionicons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    @Styles.Render("~/Content/BaseCss")
+    @Scripts.Render("~/bundles/BaseJquery")
+    @Html.Raw(JSNLog.JavascriptLogging.Configure())
+</head>
+<body class="skin-yellow sidebar-mini">
+
+    <div class="wrapper">
+        <header class="main-header">
+            @{
+                //表示每個頁面都會塞入TempData["XXX"]的資訊，以便於登出時使用 載入順序需要在此，這邊表示Header的位置
+                Html.RenderAction("AuthAttribute", "Home");
+                Html.Raw(JSNLog.JavascriptLogging.Configure());
+            }     
+            
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="~/Scripts/dist/img/tcglogo.jpg" class="img-circle" alt="User Image" />
+                    </div>
+                    <div class="pull-left info">
+                        <p>@TempData["DepartmentName"]</p>
+                        <a href="#" id="LinkStatus"><i class="fa fa-circle text-success"></i></a>
+                    </div>
+                </div>
+                <!-- search form -->
+                @*<form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Search..." />
+                        <span class="input-group-btn">
+                            <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                </form>*@
+                <!-- /.search form -->
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu">
+                    <li class="header">主選單</li>
+                    <li id="Home" class="active treeview">
+                        <a href="#">
+                            <i class="fa fa-dashboard"></i> <span>籌碼分析查詢</span> <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul id="menu" class="treeview-menu">
+                            <li><a href="@Url.Action("Index", "NewBoards")"><i class="fa fa-circle-o"></i> 更新消息</a></li>
+                            <li><a href="@Url.Action("Index", "SingleStock")"><i class="fa fa-circle-o"></i> 個股籌碼分析</a></li>
+                            <li><a href="@Url.Action("Index", "Leaderboard")"><i class="fa fa-circle-o"></i> 籌碼排行榜</a></li>
+                            <li><a href="@Url.Action("Index", "NationalInfomation")"><i class="fa fa-circle-o"></i> 國際類資訊</a></li>
+                        </ul>
+                        @{
+                            if (TempData["Account"].ToString() == "admin")
+                            {
+                                <a href="#">
+                                    <i class="fa fa-dashboard"></i> <span>管理者權限功能</span> <i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul id="menu" class="treeview-menu">
+                                    <li><a href="@Url.Action("Index", "Manager")"><i class="fa fa-circle-o"></i> 管理者頁面</a></li>
+                                </ul>
+                            }
+                        }
+                    </li>
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    @ViewBag.Title                    
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li class="active">@ViewBag.Title</li>
+                </ol>
+            </section>
+        @RenderSection("featured", required: false)
+            <!-- Main content -->
+            <section class="content">
+                @RenderBody()
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+            </div>
+            <strong> &copy  </strong> 籌碼計算中心
+        </footer>
+        <div class='control-sidebar-bg'></div>
+    </div><!-- ./wrapper -->  
+
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
+

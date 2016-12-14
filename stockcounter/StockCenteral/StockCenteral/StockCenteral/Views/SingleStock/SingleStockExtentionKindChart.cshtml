@@ -1,0 +1,13 @@
+﻿@model  StockCenteral.ViewModel.SingleStock.SingleStockModel
+
+@{
+    ViewBag.Title = "籌碼圖表_使用者自訂群組";
+
+}
+
+
+<script src="~/Scripts/self/SingleStock/SingleStockExtentionKindChart.js"></script>
+
+@MyHelper2.SingleStockExtentionKind();
+
+<div id="SingleStockExtentionKindChartTDDC" style="min-width:84%;height:400px"></div>

@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "籌碼排行榜-圖像分析";
+}
+<script src="~/Scripts/js/themes/ThemesHightcharts_Sparkline_Grid.js"></script>
+<script src="~/Scripts/self/Leardboard/LeaderBoardDataTable.js"></script>
+<script src="~/Scripts/plugins/datatables/dataTables.bootstrap.min.js"></script>
+
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+@if (Model != null)
+{
+    <script>
+        CallLeardBoardTable(document.getElementById('datepicker_start').value, document.getElementById('datepicker_end').value)
+    </script>
+
+    <div id="result"></div>
+    <table id="table-sparkline" class="table bg-info table-bordered table-striped table-hover">
+
+        @MyHelper2.LeardBoardSparklineTable("table-sparkline", Model.QueryResult)
+
+    </table>
+}

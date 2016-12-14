@@ -1,0 +1,61 @@
+﻿@model Model.ViewModel.Leardboard.LeaderboardResultTDDCModel
+@{
+    ViewBag.Title = "籌碼排行榜";
+}
+
+<script src="~/Scripts/self/Leardboard/Leardboard.js"></script>
+<script src="~/Scripts/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
+<script src="~/Scripts/jquery.blockUI.js"></script>
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="~/Content/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" />
+
+@using (Html.BeginForm("Index", "Leaderboard", new { TableName = "123", Date_Start = Html.Display("datepicker_start"), Date_End = Html.Id("datepicker_end") }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="form-group has-feedback">
+
+        <label class="col-sm-2 control-label">起始日期：</label>
+        @Html.TextBoxFor(m => m.QueryInfom.Date_Start, new { @class = "form-control-static", id = "datepicker_start", placeholder = "起始日期", value = "" })
+        
+
+    </div>
+    <div class="form-group has-feedback">
+        <label class="col-sm-2 control-label">結束日期：</label>
+        @Html.TextBoxFor(m => m.QueryInfom.Date_End, new { @class = "form-control-static", id = "datepicker_end", placeholder = "結束日期", value = "" })
+        
+
+    </div>
+
+    <div class="row">
+        <div class="col-xs-4">
+            <button type="submit" onclick="showBlockUI()" class="btn btn-default"><i class="fa fa-fw fa-search"></i> 查詢</button>
+            <p class="btn btn-default" onclick=""><i class="fa fa-caret-down"></i> 下載</p>
+            <p class="btn btn-default" onclick=""><i class="fa fa-file-text-o"></i> 列印</p>
+        </div><!-- /.col -->
+    </div>
+}
+
+
+<div class="">
+    <h2>個股籌碼相關資訊</h2>
+    <ul class="nav nav-tabs">
+        <li><a class="active" data-toggle="tab" href="#menu1">排名資料表</a></li>
+        <li><a class="active" data-toggle="tab" href="#menu2">排名圖示表</a></li>
+    </ul>
+
+    <div class="tab-content" style="width:100%">
+        <div id="menu1" class="tab-pane fade in active">
+            <h3>排名資料表</h3>
+            @Html.Partial("~/Views/Leaderboard/LeaderBoardDataTable.cshtml")
+        </div>
+        <div id="menu2" class="tab-pane fade">
+            <h3>排名圖示表</h3>
+            @Html.Partial("~/Views/Leaderboard/LeaderBoardSparkline.cshtml")
+        </div>
+    </div>
+</div>
+
+

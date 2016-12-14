@@ -1,0 +1,51 @@
+﻿@model  List<string>
+@{
+    <!--使用Datatable pluging-->
+    ViewBag.Title = "更新消息編輯系統";
+}
+<!--所需參考 kendoui .... -->
+<link href="~/Content/kendo/2016.2.504/kendo.common.min.css" rel="stylesheet" />
+<link href="~/Content/kendo/2016.2.504/kendo.rtl.min.css" rel="stylesheet" />
+<link href="~/Content/kendo/2016.2.504/kendo.silver.min.css" rel="stylesheet" />
+<link href="~/Content/kendo/2016.2.504/kendo.mobile.all.min.css" rel="stylesheet" />
+<script src="~/Scripts/kendo/2016.2.504/kendo.core.min.js"></script>
+<script src="~/Scripts/kendo/2016.2.504/kendo.data.min.js"></script>
+<script src="~/Scripts/kendo/2016.2.504/kendo.menu.min.js"></script>
+<script src="~/Scripts/kendo/2016.2.504/kendo.ui.core.min.js"></script>
+<script src="~/Scripts/kendo/2016.2.504/kendo.window.min.js"></script>
+
+<!--綁定kenodui 編輯頁面-->
+<script src="~/Scripts/self/Manager/KendoManagerEditForm.js"></script>
+<!--綁定datatable 資料列-->
+<script src="~/Scripts/self/Manager/NewsBoard.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="~/Content/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" />
+
+<!DOCTYPE html>
+<html>
+<body>
+    <input type="button" id="New_Rowdata" value="新增資料"/>
+    <br />
+    <table id="NewBoardsEditTable" class="table bg-info table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <td>Guid</td>
+                <td>種類</td>
+                <td>標題</td>
+                <td>內容</td>
+                <td>時間</td>
+                <td>備註</td>
+                <td>顯示資訊</td>
+                <td>工作內容</td>
+            </tr>
+        </thead>
+    </table>
+
+
+    <div id="newwindow"></div>
+
+
+</body>
+</html>
+

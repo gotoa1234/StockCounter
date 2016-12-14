@@ -1,0 +1,35 @@
+﻿@model  StockCenteral.ViewModel.SingleStock.SingleStockModel
+
+@{ 
+    ViewBag.Title = "外資資料";
+
+}
+<html>
+<body>
+    <table>
+        <tr>
+            <td>
+                <div name="iframe_a" style="width:600px; height:1200px; overflow:hidden; position:relative">
+                    <iframe src="http://jsjustweb.jihsun.com.tw/z/zg/zgk.djhtm?A=D&B=0&C=1" height="1200" width="600" id="ForeignDataframe" style="position:absolute;top:-00px;left:-140px" scrolling="yes" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+                </div>
+
+            </td>
+            <td>
+                <div name="iframe_b" style="width:600px; height:1200px; overflow:hidden; position:relative">
+                    <iframe src="http://jsjustweb.jihsun.com.tw/z/zg/zgk.djhtm?A=D&B=0&C=5" height="1200" width="600" id="ForeignDataFiveframe" style="position:absolute;top:-00px;left:-140px" scrolling="yes" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+                </div>
+
+
+            </td>
+        
+        </tr>
+
+    </table>
+
+
+
+
+
+</body>
+</html>
