@@ -16,3 +16,8 @@ D:\線上網站\StockCenteral20160705\StockCenteral\StockCenteral\BochenLinTestD
 D:\線上網站\StockCenteral20160705\StockCenteral\StockCenteral\BochenLinTestDB\obj\Debug\predeploy.sql
 D:\線上網站\StockCenteral20160705\StockCenteral\StockCenteral\BochenLinTestDB\obj\Debug\BochenLinTestDB.dll
 D:\線上網站\StockCenteral20160705\StockCenteral\StockCenteral\BochenLinTestDB\obj\Debug\BochenLinTestDB.pdb
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\BochenLinTestDB\bin\Debug\BochenLinTestDB.dacpac
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\BochenLinTestDB\bin\Debug\BochenLinTestDB.dll
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\BochenLinTestDB\bin\Debug\BochenLinTestDB.pdb
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\BochenLinTestDB\obj\Debug\BochenLinTestDB.dll
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\BochenLinTestDB\obj\Debug\BochenLinTestDB.pdb

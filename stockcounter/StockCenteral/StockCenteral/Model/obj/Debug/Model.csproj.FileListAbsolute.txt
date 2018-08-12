@@ -70,3 +70,14 @@ D:\線上網站\StockCenteral20160705\StockCenteral\StockCenteral\Model\bin\Debu
 D:\線上網站\StockCenteral20160705\StockCenteral\StockCenteral\Model\obj\Debug\Model.dll
 D:\線上網站\StockCenteral20160705\StockCenteral\StockCenteral\Model\obj\Debug\Model.pdb
 D:\線上網站\StockCenteral20160705\StockCenteral\StockCenteral\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Model\bin\Debug\Model.dll.config
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Model\bin\Debug\Model.dll
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Model\bin\Debug\Model.pdb
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Model\bin\Debug\EntityFramework.dll
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Model\bin\Debug\EntityFramework.xml
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Model\bin\Debug\zh-Hant\EntityFramework.resources.dll
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Model\bin\Debug\zh-Hant\EntityFramework.SqlServer.resources.dll
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Model\obj\Debug\Model.dll
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Model\obj\Debug\Model.pdb

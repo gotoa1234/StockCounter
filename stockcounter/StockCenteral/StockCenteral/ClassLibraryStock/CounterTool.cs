@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 using System.Data.SqlClient;
+using Dapper;
+using ClassLibraryStock.Web;
 
 namespace ClassLibraryStock
 {
@@ -31,123 +33,63 @@ namespace ClassLibraryStock
         ///<param name = "ThisWeek" >true = 只加入本周 false =所有資料表更新</ param >
         public void Add(bool ThisWeek)
         {
+            WebClient client = new WebClient();//------Client
+            NlogCounterComponet nlogWeb = new NlogCounterComponet();
             int AlreadyInsert = 0;//已經插入的資料數量 累計
-            try
-            {
-                WebClient client = new WebClient();//------Client
-                List<string> TddcDate = StockDateTable();//取得集保戶日期
-                if (ThisWeek)
+      
+
+            List<string> TddcDate = new List<string>();// StockDateTable();//取得集保戶日期
+            Parallel.ForEach(
+                    StockNoTable(),
+                    new ParallelOptions { MaxDegreeOfParallelism = 3 },
+                    ( stNo) =>
                 {
-                    var temp = TddcDate.ElementAt(0);
-                    TddcDate.Clear();
-                    TddcDate.Add(temp);
-                }
-
-
-                foreach (var No in StockNoTable())//將每個代號都視為獨立的資料表
-                {
-                    List<Counter> Detail = new List<Counter>();
-
-                    foreach (var Date in TddcDate)
+                    try
                     {
-                        #region 取得該StockNo 的Datalist
-
-                        try
+                        List<Counter> Detail = new List<Counter>();
+                        //取得當前股票代號的年月日
+                        var nowStotckNoDateList = get_stockDateList(stNo).AsParallel();
+                        //沒資料當然不用往下跑 - 多執行緒為return ※自己就是唯一個體
+                        if (nowStotckNoDateList.Count() == 0)
+                            return;
+                        //爬蟲網站的資料
+                        Detail = nlogWeb.getNlogData(stNo, nowStotckNoDateList);
+                        //取完後要將該表資料 Transaction 到DB
+                        if (Detail.Count > 0)
                         {
-                            MemoryStream ms = new MemoryStream(client.DownloadData(ConfigurationManager.AppSettings["TDDC"].ToString() + "?SCA_DATE=" + Date + "&&SqlMethod=StockNo&StockNo=" + No + "&StockName=&sub=%ACd%B8%DF"));
-
-                            // 使用預設編碼讀入 HTML 
-                            HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
-                            doc.Load(ms, Encoding.Default);
-
-                            // 裝載第一層查詢結果 
-                            HtmlAgilityPack.HtmlDocument docStockContext = new HtmlAgilityPack.HtmlDocument();
-                            HtmlNodeCollection nodeHeaders;
-
-                            // 每筆資料
-                            Counter Single = new Counter();
-
-                            for (int SQ = 2; SQ < 17; SQ++)
-                            {
-                                //-- 該網頁的Xpath語法 
-                                try
-                                {
-                                    ///html[1]/body[1]/table[1]/tr[1]/td[1]/table[6]/tbody[1]/tr[1]
-                                    docStockContext.LoadHtml(doc.DocumentNode.SelectSingleNode("/html[1]/body[1]/table[1]/tr[1]/td[1]/table[6]/tbody[1]/tr[" + SQ + "]").InnerHtml);
-                                    // 取得日期分割
-                                }
-                                catch
-                                {
-                                    continue;//--該筆資料不能取得 
-                                }
-                                Single = new Counter();
-
-                                for (int s = 1; s < 6; s++)
-                                {
-
-                                    nodeHeaders = docStockContext.DocumentNode.SelectNodes("./td[" + s.ToString() + "]");
-                                    string[] values = docStockContext.DocumentNode.SelectSingleNode("./td[" + s.ToString() + "]").InnerText.Trim().Split('\n');
-                                    switch (s)
-                                    {
-                                        case 1:
-                                            Single.Level = int.Parse(values[0].ToString());
-                                            break;
-                                        case 2:
-                                            Single.Class = values[0];
-                                            break;
-                                        case 3:
-                                            Single.People = int.Parse(values[0].ToString().Replace(",", ""));
-                                            break;
-                                        case 4:
-                                            long Temp_PerShare = long.Parse(values[0].ToString().Replace(",", ""));
-
-                                            Single.PerShare = Convert.ToInt32(Temp_PerShare / 1000);//----股數變張數 
-                                            break;
-                                        case 5:
-                                            Single.CHEP = float.Parse(values[0].ToString());
-                                            break;
-
-                                    }
-
-
-                                }
-                                //--插入進資料庫 這裡的資料一定為唯一的
-
-                                Single.StockNo = No;//股票代號
-                                Single.StockName = No;//股票名稱
-                                Single.Year = int.Parse(Date.Substring(0, 4));
-                                Single.Month = int.Parse(Date.Substring(4, 2));
-                                Single.Day = int.Parse(Date.Substring(6, 2));
-                                Detail.Add(Single);
-
-                            }
+                            AlreadyInsert += WriteSqlServer(Detail);
                         }
-                        catch (Exception ex)
-                        {
-                            this.Tool.LoggerTool_Add(new Logger("Error", DateTime.Now, ex.Message, ex.StackTrace));
-                        }
-                        #endregion
                     }
-
-                    //取完後要將該表資料 Transaction 到DB
-                    if (Detail.Count > 0)
+                    catch (Exception ex)
                     {
-                        AlreadyInsert += WriteSqlServer(Detail);
+                        this.Tool.LoggerTool_Add(new Logger("Error", DateTime.Now, ex.Message, ex.StackTrace));
                     }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                this.Tool.LoggerTool_Add(new Logger("Error", DateTime.Now, ex.Message, ex.StackTrace));
-            }
-
-
-            ///
+                });
             this.Tool.LoggerTool_Add(new Logger("Info", DateTime.Now, "已經順利執行插入資料 共：" + AlreadyInsert, ""));
 
-
-
+            //foreach (var stNo in StockNoTable())//將每個代號都視為獨立的資料表
+            //{
+            //    try
+            //    {
+            //        List<Counter> Detail = new List<Counter>();
+            //        //取得當前股票代號的年月日
+            //        var nowStotckNoDateList = get_stockDateList(stNo).AsParallel();
+            //        //沒資料當然不用往下跑
+            //        if (nowStotckNoDateList.Count() == 0)
+            //            continue;
+            //        //爬蟲網站的資料
+            //        Detail = nlogWeb.getNlogData(stNo , nowStotckNoDateList);
+            //        //取完後要將該表資料 Transaction 到DB
+            //        if (Detail.Count > 0)
+            //        {
+            //            AlreadyInsert += WriteSqlServer(Detail);
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        this.Tool.LoggerTool_Add(new Logger("Error", DateTime.Now, ex.Message, ex.StackTrace));
+            //    }
+            //}
         }
 
 
@@ -327,6 +269,33 @@ namespace ClassLibraryStock
             return AddInsert.Count();
         }
 
+        /// <summary>
+        /// 取得股票代號對應的現有年月日
+        /// </summary>
+        /// <param name="stockNo"></param>
+        /// <returns></returns>
+        public IEnumerable<Counter> get_stockDateList(string stockNo)
+        {
+            IEnumerable<Counter> result = Enumerable.Empty<Counter>();
+
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["EocConnection"].ToString()))
+                {
+                    cn.Open();
+                    result = cn.Query<Counter>(
+                    string.Format("SELECT year,month,day FROM {0} WHERE StockNo = @_stockNo Group By year,month,day", "TDDC_"+stockNo),
+                    new { _stockNo = stockNo });
+
+                    return result;
+                }
+            }
+            catch {
+
+            }
+
+            return result;
+        }
 
         /// <summary>
         /// 檢查是否存在該資料表
