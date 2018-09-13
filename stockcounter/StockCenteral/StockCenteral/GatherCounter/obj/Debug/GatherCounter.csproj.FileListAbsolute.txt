@@ -130,6 +130,10 @@ D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\GatherCounter\bi
 D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\GatherCounter\bin\Debug\Dapper.xml
 D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\GatherCounter\bin\Debug\zh-Hant\EntityFramework.resources.dll
 D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\GatherCounter\bin\Debug\zh-Hant\EntityFramework.SqlServer.resources.dll
-D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\GatherCounter\obj\Debug\GatherCounter.csprojResolveAssemblyReference.cache
 D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\GatherCounter\obj\Debug\GatherCounter.exe
 D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\GatherCounter\obj\Debug\GatherCounter.pdb
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\GatherCounter\bin\Debug\ClassLibraryStock.dll.config
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\GatherCounter\bin\Debug\Model.dll.config
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\GatherCounter\obj\Debug\GatherCounter.csprojAssemblyReference.cache
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\GatherCounter\obj\Debug\GatherCounter.csproj.CoreCompileInputs.cache
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\GatherCounter\obj\Debug\GatherCounter.csproj.CopyComplete

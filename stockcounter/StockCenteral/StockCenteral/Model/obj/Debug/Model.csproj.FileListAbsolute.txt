@@ -81,3 +81,6 @@ D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Model\bin\Debug\
 D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Model\bin\Debug\zh-Hant\EntityFramework.SqlServer.resources.dll
 D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Model\obj\Debug\Model.dll
 D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Model\obj\Debug\Model.pdb
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Model\obj\Debug\Model.csprojAssemblyReference.cache
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Model\obj\Debug\Model.csproj.CopyComplete

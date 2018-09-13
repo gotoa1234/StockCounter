@@ -116,6 +116,9 @@ D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\ClassLibraryStoc
 D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\ClassLibraryStock\bin\Debug\HtmlAgilityPack.xml
 D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\ClassLibraryStock\bin\Debug\zh-Hant\EntityFramework.resources.dll
 D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\ClassLibraryStock\bin\Debug\zh-Hant\EntityFramework.SqlServer.resources.dll
-D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\ClassLibraryStock\obj\Debug\ClassLibraryStock.csprojResolveAssemblyReference.cache
 D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\ClassLibraryStock\obj\Debug\ClassLibraryStock.dll
 D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\ClassLibraryStock\obj\Debug\ClassLibraryStock.pdb
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\ClassLibraryStock\bin\Debug\Model.dll.config
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\ClassLibraryStock\obj\Debug\ClassLibraryStock.csprojAssemblyReference.cache
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\ClassLibraryStock\obj\Debug\ClassLibraryStock.csproj.CoreCompileInputs.cache
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\ClassLibraryStock\obj\Debug\ClassLibraryStock.csproj.CopyComplete
