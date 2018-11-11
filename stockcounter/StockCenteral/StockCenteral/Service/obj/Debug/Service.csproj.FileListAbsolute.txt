@@ -107,6 +107,16 @@ D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Service\bin\Debu
 D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Service\bin\Debug\Newtonsoft.Json.xml
 D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Service\bin\Debug\zh-Hant\EntityFramework.resources.dll
 D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Service\bin\Debug\zh-Hant\EntityFramework.SqlServer.resources.dll
-D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Service\obj\Debug\Service.csprojResolveAssemblyReference.cache
 D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Service\obj\Debug\Service.dll
 D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Service\obj\Debug\Service.pdb
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Service\bin\Debug\Model.dll.config
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Service\obj\Debug\Service.csprojAssemblyReference.cache
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Service\obj\Debug\Service.csproj.CoreCompileInputs.cache
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Service\obj\Debug\Service.csproj.CopyComplete
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Service\bin\Debug\Common.dll
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Service\bin\Debug\Repository.dll
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Service\bin\Debug\Dapper.dll
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Service\bin\Debug\Common.pdb
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Service\bin\Debug\Repository.pdb
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Service\bin\Debug\Dapper.pdb
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\Service\bin\Debug\Dapper.xml

@@ -30,15 +30,13 @@ namespace ClassLibraryStock
         /// 寫入該週的資料到自己的資料表
         /// 說明：每股都是獨立的資料表
         /// </summary>
-        ///<param name = "ThisWeek" >true = 只加入本周 false =所有資料表更新</ param >
-        public void Add(bool ThisWeek)
+        public void Add()
         {
             WebClient client = new WebClient();//------Client
             NlogCounterComponet nlogWeb = new NlogCounterComponet();
             int AlreadyInsert = 0;//已經插入的資料數量 累計
-      
 
-            List<string> TddcDate = new List<string>();// StockDateTable();//取得集保戶日期
+            List<string> TddcDate = new List<string>();
             Parallel.ForEach(
                     StockNoTable(),
                     new ParallelOptions { MaxDegreeOfParallelism = 3 },
@@ -67,29 +65,6 @@ namespace ClassLibraryStock
                 });
             this.Tool.LoggerTool_Add(new Logger("Info", DateTime.Now, "已經順利執行插入資料 共：" + AlreadyInsert, ""));
 
-            //foreach (var stNo in StockNoTable())//將每個代號都視為獨立的資料表
-            //{
-            //    try
-            //    {
-            //        List<Counter> Detail = new List<Counter>();
-            //        //取得當前股票代號的年月日
-            //        var nowStotckNoDateList = get_stockDateList(stNo).AsParallel();
-            //        //沒資料當然不用往下跑
-            //        if (nowStotckNoDateList.Count() == 0)
-            //            continue;
-            //        //爬蟲網站的資料
-            //        Detail = nlogWeb.getNlogData(stNo , nowStotckNoDateList);
-            //        //取完後要將該表資料 Transaction 到DB
-            //        if (Detail.Count > 0)
-            //        {
-            //            AlreadyInsert += WriteSqlServer(Detail);
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        this.Tool.LoggerTool_Add(new Logger("Error", DateTime.Now, ex.Message, ex.StackTrace));
-            //    }
-            //}
         }
 
 
@@ -178,7 +153,7 @@ namespace ClassLibraryStock
             List<Counter> AddInsert = new List<Counter>();//要加入的Insert資料
             CheckData(MyData[0].StockNo);//檢查是否有該表在資料庫，沒有就要加入
 
-            SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["EocConnection"].ToString());
+            SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["StockCounterMSSQL"].ToString());
 
 
             string TableName = "TDDC_" + MyData[0].StockNo;
@@ -192,7 +167,7 @@ namespace ClassLibraryStock
 
 
                 //1.先判斷是否資料庫有該資料
-                using (SqlConnection sqlConnection1 = new SqlConnection(ConfigurationManager.ConnectionStrings["EocConnection"].ToString()))
+                using (SqlConnection sqlConnection1 = new SqlConnection(ConfigurationManager.ConnectionStrings["StockCounterMSSQL"].ToString()))
                 {
                     sqlConnection1.Open();
                     foreach (var Single in MyData)
@@ -214,7 +189,7 @@ namespace ClassLibraryStock
 
                 #region 將需要加入的資料進行Transaction  
 
-                using (SqlConnection sqlConnectionTrans = new SqlConnection(ConfigurationManager.ConnectionStrings["EocConnection"].ToString()))
+                using (SqlConnection sqlConnectionTrans = new SqlConnection(ConfigurationManager.ConnectionStrings["StockCounterMSSQL"].ToString()))
                 {
                     SqlTransaction transaction;//
                     sqlConnectionTrans.Open();
@@ -264,8 +239,6 @@ namespace ClassLibraryStock
                 this.Tool.LoggerTool_Add(new Logger("Error", DateTime.Now, sqlError.Message, sqlError.StackTrace));
             }
             db.Close();
-
-
             return AddInsert.Count();
         }
 
@@ -280,7 +253,7 @@ namespace ClassLibraryStock
 
             try
             {
-                using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["EocConnection"].ToString()))
+                using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["StockCounterMSSQL"].ToString()))
                 {
                     cn.Open();
                     result = cn.Query<Counter>(
@@ -309,7 +282,7 @@ namespace ClassLibraryStock
                 string connetionString = null;
                 SqlConnection con;
                 SqlCommand command;
-                connetionString = ConfigurationManager.ConnectionStrings["EocConnection"].ToString();
+                connetionString = ConfigurationManager.ConnectionStrings["StockCounterMSSQL"].ToString();
                 con = new SqlConnection(connetionString);
                 string TableName = "TDDC_" + StockNo;
                 string CreateTable = "CREATE TABLE " + TableName + " (Level int not null , Class nvarchar(30) not null, People  int not null , PerShare int not null ,CHEP float not null , StockNo  nvarchar(30) not null,StockName nvarchar(30) not null,  Year int not null, Month int not null ,Day int not null)"; ;
@@ -349,7 +322,7 @@ namespace ClassLibraryStock
                 string connetionString = null;
                 SqlConnection con;
                 SqlCommand command;
-                connetionString = ConfigurationManager.ConnectionStrings["EocConnection"].ToString();
+                connetionString = ConfigurationManager.ConnectionStrings["StockCounterMSSQL"].ToString();
                 con = new SqlConnection(connetionString);
                 string CreateTable = "CREATE TABLE " + TableName + " (StockNo nvarchar(30) not null, TableName nvarchar(30) not null, Ch nvarchar(30) not null, State nvarchar(30) not null)"; ;
                 try
@@ -374,7 +347,7 @@ namespace ClassLibraryStock
 
             try
             {
-                using (SqlConnection sqlConnectionTrans = new SqlConnection(ConfigurationManager.ConnectionStrings["EocConnection"].ToString()))
+                using (SqlConnection sqlConnectionTrans = new SqlConnection(ConfigurationManager.ConnectionStrings["StockCounterMSSQL"].ToString()))
                 {
                     sqlConnectionTrans.Open();
                     try

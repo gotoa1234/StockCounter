@@ -758,6 +758,11 @@ D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\StockCenteral\bi
 D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\StockCenteral\bin\zh-Hant\Microsoft.Owin.Security.Google.resources.dll
 D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\StockCenteral\bin\zh-Hant\Microsoft.Owin.Security.Twitter.resources.dll
 D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\StockCenteral\bin\zh-Hant\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
-D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\StockCenteral\obj\Debug\StockCenteral.csprojResolveAssemblyReference.cache
 D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\StockCenteral\obj\Debug\StockCenteral.dll
 D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\StockCenteral\obj\Debug\StockCenteral.pdb
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\StockCenteral\bin\Model.dll.config
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\StockCenteral\bin\Service.dll.config
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\StockCenteral\bin\JSNLog.dll.config
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\StockCenteral\obj\Debug\StockCenteral.csprojAssemblyReference.cache
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\StockCenteral\obj\Debug\StockCenteral.csproj.CoreCompileInputs.cache
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\StockCenteral\obj\Debug\StockCenteral.csproj.CopyComplete

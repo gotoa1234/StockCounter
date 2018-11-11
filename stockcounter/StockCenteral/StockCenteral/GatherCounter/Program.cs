@@ -1,11 +1,6 @@
 ﻿using ClassLibraryStock;
 using ClassLibraryStock.OriClass;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GatherCounter
 {
@@ -15,10 +10,10 @@ namespace GatherCounter
     public class Program
     {
         static void Main(string[] args)
-        {
+        { 
             //Logger tool
             LoggerTool Logger = new LoggerTool();
- 
+
            //蒐集籌碼資料
             try
             {
@@ -27,7 +22,7 @@ namespace GatherCounter
 
                 CounterTool Build = new CounterTool();
                 ////收集籌碼的資料 - true =只加入本周 false = 全部加入
-                Build.Add(true);
+                Build.Add();
             }
             catch (Exception ex)
             {

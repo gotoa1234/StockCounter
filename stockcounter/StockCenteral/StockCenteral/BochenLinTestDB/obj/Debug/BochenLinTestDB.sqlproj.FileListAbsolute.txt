@@ -21,3 +21,4 @@ D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\BochenLinTestDB\
 D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\BochenLinTestDB\bin\Debug\BochenLinTestDB.pdb
 D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\BochenLinTestDB\obj\Debug\BochenLinTestDB.dll
 D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\BochenLinTestDB\obj\Debug\BochenLinTestDB.pdb
+D:\github\StockCounter\stockcounter\StockCenteral\StockCenteral\BochenLinTestDB\obj\Debug\BochenLinTestDB.sqlprojAssemblyReference.cache
